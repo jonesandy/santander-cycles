@@ -46,7 +46,7 @@ describe DockingStation do
   describe '#dock' do
 
     it 'raises error when full' do
-      station.dock(@bike)
+      20.times { station.dock(@bike) }
       expect { station.dock(@bike) }.to raise_error "Station full!"
     end
 
