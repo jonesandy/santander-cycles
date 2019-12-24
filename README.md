@@ -105,6 +105,8 @@ station.dock(bike) # To dock a bike
 
 bike.report_broken # To report a broken bike
 ```
+![Image of program running in IRB](./_imgs/irb.png)
+
 
 ## Running tests
 
