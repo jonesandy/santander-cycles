@@ -14,7 +14,7 @@ class DockingStation
 
     @bikes.each do |bike|
       if bike.working?
-        return @bikes.pop
+        return @bikes.delete(bike)
       end
     end
         

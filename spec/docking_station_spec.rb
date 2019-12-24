@@ -3,10 +3,6 @@ require 'docking_station'
 describe DockingStation do
 
   let(:station) { DockingStation.new }
-
-  before(:each) do
-    @bike = Bike.new
-  end
     
   it 'responds to #release_bike' do
     expect(station).to respond_to(:release_bike)
@@ -20,6 +16,7 @@ describe DockingStation do
     context 'docked bike' do
 
       before(:each) do
+        @bike = double("Bike", :working? => true)
         station.dock(@bike)
       end
 
@@ -37,13 +34,23 @@ describe DockingStation do
       expect { station.release_bike }.to raise_error "No bikes available!"
     end
 
+    it 'should not release broken bike' do
+      bike = double("Bike", :working? => false)
+      station.dock(bike)
+
+      expect { station.release_bike}.to raise_error "No bikes available!"
+    end
+
   end
 
   describe '#dock' do
-
+    
     it 'raises error when full' do
-      DockingStation::DEFAULT_CAPACITY.times { station.dock(@bike) }
-      expect { station.dock(@bike) }.to raise_error "Station full!"
+      
+      bike = double("Bike", :working? => true)
+
+      DockingStation::DEFAULT_CAPACITY.times { station.dock(bike) }
+      expect { station.dock(bike) }.to raise_error "Station full!"
     end
 
   end
