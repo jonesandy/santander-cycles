@@ -17,7 +17,7 @@ ruby -v
 If running RVM for Ruby management please install 2.6.5:
 
 ```bash
-rvm install 2.1.1
+rvm install 2.6.5
 
 # .ruby-version file should switch to correct Ruby version. If not run this command
 rvm 2.6.5
